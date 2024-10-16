@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buton Da/Nu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        #daBtn, #nuBtn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        #daBtn {
+            background-image: url('buton.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        #daBtn:hover {
+            background-color: #aaffaa;
+        }
+
+        #nuBtn {
+            margin-left: 20px; /* add some margin to create space between buttons */
+            position: relative; /* add relative positioning to #nuBtn */
+            background-image: url('buton.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>I like you.  Do you like me?</h1>
+
+    <div class="buttons">
+        <button id="daBtn">Da</button>
+        <button id="nuBtn">Nu</button>
+    </div>
+
+    <script>
+        const nuBtn = document.getElementById("nuBtn");
+        const body = document.body;
+        let intervalId = null;
+
+        nuBtn.addEventListener("mouseover", () => {
+            intervalId = setInterval(() => {
+                const x = Math.random() * (body.clientWidth - nuBtn.offsetWidth);
+                const y = Math.random() * (body.clientHeight - nuBtn.offsetHeight);
+                nuBtn.style.left = `${x}px`;
+                nuBtn.style.top = `${y}px`;
+            }, 100); // update position every 100ms
+        });
+
+        nuBtn.addEventListener("mouseout", () => {
+            clearInterval(intervalId);
+        });
+
+        const daBtn = document.getElementById("daBtn");
+
+        daBtn.addEventListener("click", () => {
+            alert("Te iubesc frumoasa mea! Esti perfecta!");
+        });
+    </script>
+
+</body>
+</html>
