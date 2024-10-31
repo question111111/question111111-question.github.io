@@ -51,8 +51,8 @@
         }
 
         #nuBtn {
-            margin-left: 20px; /* add some margin to create space between buttons */
-            position: relative; /* add relative positioning to #nuBtn */
+            margin-left: 20px;
+            position: relative;
             background-image: url('buton.jpg');
             background-size: cover;
             background-position: center;
@@ -62,7 +62,7 @@
 </head>
 <body>
 
-    <h1>I like you.  Do you like me?</h1>
+    <h1>I like you. Do you like me?</h1>
 
     <div class="buttons">
         <button id="daBtn">Da</button>
@@ -80,7 +80,7 @@
                 const y = Math.random() * (body.clientHeight - nuBtn.offsetHeight);
                 nuBtn.style.left = `${x}px`;
                 nuBtn.style.top = `${y}px`;
-            }, 100); // update position every 100ms
+            }, 100);
         });
 
         nuBtn.addEventListener("mouseout", () => {
@@ -90,7 +90,26 @@
         const daBtn = document.getElementById("daBtn");
 
         daBtn.addEventListener("click", () => {
+            console.log("Butonul 'Da' a fost apăsat"); // Mesaj în consola browserului
             alert("Te iubesc frumoasa mea! Esti perfecta!");
+            
+            fetch('https://script.google.com/u/0/home/projects/1xOlPbKc6xkoyXK6UzxOFM27SDg3vu1ggZMEinFpqpsHJsxR307UjSqee/edit', { // Înlocuiește cu URL-ul scriptului tău
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: "User likes me!" })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Raport trimis cu succes!");
+                } else {
+                    console.error("Eroare la trimiterea raportului.");
+                }
+            })
+            .catch(error => {
+                console.error("Eroare de rețea:", error);
+            });
         });
     </script>
 
